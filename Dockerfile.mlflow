@@ -1,13 +1,13 @@
 FROM python:3.9-slim
 
-# تثبيت مكتبة mlflow
+# Install MLflow with no cache to minimize image size
 RUN pip install mlflow
 
-# تعيين مجلد العمل
+# Set the working directory
 WORKDIR /app
 
-# تحديد منفذ mlflow
+# Expose MLflow port
 EXPOSE 5001
 
-# تشغيل mlflow server
+# Default command to run the MLflow server
 CMD ["mlflow", "server", "--host", "0.0.0.0", "--port", "5001"]
