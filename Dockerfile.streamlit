@@ -1,17 +1,17 @@
 FROM python:3.9-slim
 
-# تثبيت مكتبة streamlit
+# Install Streamlit with no cache to minimize image size
 RUN pip install streamlit
 
-# نسخ ملف التطبيق (إذا كان موجودًا)
+# Copy application file to the container
 COPY app.py /app/app.py
 
-# تعيين مجلد العمل
+# Set the working directory
 WORKDIR /app
 
-# تحديد منفذ Streamlit
+# Expose Streamlit port
 EXPOSE 8501
 
-# الأمر الافتراضي لتشغيل التطبيق
+# Default command to run the application
 CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0", "--server.port=8501"]
 
