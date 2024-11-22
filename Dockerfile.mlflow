@@ -1,0 +1,13 @@
+FROM python:3.9-slim
+
+# تثبيت مكتبة mlflow
+RUN pip install mlflow
+
+# تعيين مجلد العمل
+WORKDIR /app
+
+# تحديد منفذ mlflow
+EXPOSE 5001
+
+# تشغيل mlflow server
+CMD ["mlflow", "server", "--host", "0.0.0.0", "--port", "5001"]
